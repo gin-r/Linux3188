@@ -1011,7 +1011,10 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
     .type               = RFKILL_TYPE_BLUETOOTH,
 
     .poweron_gpio       = { // BT_REG_ON
-#ifdef CONFIG_RFKILL_RK_POWERON_PIN3_PD1
+#if defined(CONFIG_RFKILL_BT_POWERON_PIN3_PB5)
+		#warning "[gin] for J22: .io = RK30__PIN3_PB5,"
+        .io             = RK30_PIN3_PB5,
+#elif defined(CONFIG_RFKILL_RK_POWERON_PIN3_PD1)
         .io             = RK30_PIN3_PD1,
 #else
         .io             = INVALID_GPIO, //SAW - RK30_PIN3_PD1, //RK30_PIN3_PC7,
@@ -1020,7 +1023,11 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
         .enable         = GPIO_HIGH,
 	.iomux		= {
 	    .name	= "bt_poweron",
-#ifdef CONFIG_RFKILL_RK_POWERON_PIN3_PD1
+
+#if defined(CONFIG_RFKILL_BT_POWERON_PIN3_PB5)
+		#warning "[gin] for J22: .fgpio      = GPIO3_B5,"
+	    .fgpio      = GPIO3_B5,
+#elif defined(CONFIG_RFKILL_RK_POWERON_PIN3_PD1)
 	    .fgpio      = GPIO3_D1,
 #else
 	    .fgpio      = GPIO3_C7,

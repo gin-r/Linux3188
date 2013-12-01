@@ -47,21 +47,30 @@ config ACT8846_LDO6_18V
 	default n
 
 
+
+config RFKILL_RK_POWERON_PIN3_PB4
+  bool "Use GPIO PIN3 PB4 for RFKILL RK poweron (e.g. for J22 stick)"
+  default n
+
+config RFKILL_BT_POWERON_PIN3_PB5 
+  bool "Use GPIO PIN3 PB5 for bluetooth poweron (e.g. for J22 stick)"
+  default n
+
 config RFKILL_RK_POWERON_PIN3_PD1
   bool "Use GPIO PIN3 PD1 for RFKILL RK poweron"
-  default y
+  default n
 
 config RFKILL_RK_RESET_INVALID_GPIO
   bool "Use INVALID_GPIO for RFKILL RK reset"
-  default y
+  default n
 
 config RFKILL_RK_WAKE_PIN3_PC7
   bool "Use GPIO PIN3 PC7 for RFKILL RK wake"
-  default y
+  default n
 
 config RFKILL_RK_WAKE_HOST_PIN3_PC6
   bool "Use GPIO PIN3 PC6 for RFKILL RK wake host"
-  default y
+  default n
 
 
 
